@@ -1,0 +1,66 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/misc/misc",
+			"style": {
+				"navigationBarTitleText": "法治乐园",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/advice/advice",
+			"style": {
+				"navigationBarTitleText": "法律咨询",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/about/about",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationBarTextStyle": "white"
+			}
+		}
+	],
+	"tabBar": {
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "/static/tabBar/index-unselected.png",
+				"selectedIconPath": "/static/tabBar/index-selected.png"
+			},
+			{
+				"pagePath": "pages/misc/misc",
+				"text": "法治乐园",
+				"iconPath": "/static/tabBar/misc-unselected.png",
+				"selectedIconPath": "/static/tabBar/misc-selected.png"
+			},
+			{
+				"pagePath": "pages/advice/advice",
+				"text": "法律咨询",
+				"iconPath": "/static/tabBar/advice-unselected.png",
+				"selectedIconPath": "/static/tabBar/advice-selected.png"
+			},
+			{
+				"pagePath": "pages/about/about",
+				"text": "我的",
+				"iconPath": "/static/tabBar/about-unselected.png",
+				"selectedIconPath": "/static/tabBar/about-selected.png"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#76b56a",
+		"backgroundColor": "#F8F8F8"
+	}
+}
