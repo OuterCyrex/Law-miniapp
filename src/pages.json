@@ -1,66 +1,75 @@
 {
-	"pages": [
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "首页",
-				"navigationBarTextStyle": "white"
-			}
-		},
-		{
-			"path": "pages/misc/misc",
-			"style": {
-				"navigationBarTitleText": "法治乐园",
-				"navigationBarTextStyle": "white"
-			}
-		},
-		{
-			"path": "pages/advice/advice",
-			"style": {
-				"navigationBarTitleText": "法律咨询",
-				"navigationBarTextStyle": "white"
-			}
-		},
-		{
-			"path": "pages/about/about",
-			"style": {
-				"navigationBarTitleText": "我的",
-				"navigationBarTextStyle": "white"
-			}
-		}
-	],
-	"tabBar": {
-		"list": [
-			{
-				"pagePath": "pages/index/index",
-				"text": "首页",
-				"iconPath": "/static/tabBar/index-unselected.png",
-				"selectedIconPath": "/static/tabBar/index-selected.png"
-			},
-			{
-				"pagePath": "pages/misc/misc",
-				"text": "法治乐园",
-				"iconPath": "/static/tabBar/misc-unselected.png",
-				"selectedIconPath": "/static/tabBar/misc-selected.png"
-			},
-			{
-				"pagePath": "pages/advice/advice",
-				"text": "法律咨询",
-				"iconPath": "/static/tabBar/advice-unselected.png",
-				"selectedIconPath": "/static/tabBar/advice-selected.png"
-			},
-			{
-				"pagePath": "pages/about/about",
-				"text": "我的",
-				"iconPath": "/static/tabBar/about-unselected.png",
-				"selectedIconPath": "/static/tabBar/about-selected.png"
-			}
-		]
-	},
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#76b56a",
-		"backgroundColor": "#F8F8F8"
-	}
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/expert/expert",
+      "style": {
+        "navigationBarTitleText": "专家咨询",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/ai/ai",
+      "style": {
+        "navigationBarTitleText": "AI对话",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/advice/advice",
+      "style": {
+        "navigationBarTitleText": "在线建议",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/about/about",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "navigationBarTextStyle": "white"
+      }
+    }
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/expert/expert",
+        "text": "专家咨询",
+        "iconPath": "/static/tabBar/expert-unselected.png",
+        "selectedIconPath": "/static/tabBar/expert-selected.png"
+      },
+      {
+        "pagePath": "pages/ai/ai",
+        "text": "AI对话",
+        "iconPath": "/static/tabBar/ai-unselected.png",
+        "selectedIconPath": "/static/tabBar/ai-selected.png"
+      },
+      {
+        "pagePath": "pages/advice/advice",
+        "text": "在线建议",
+        "iconPath": "/static/tabBar/advice-unselected.png",
+        "selectedIconPath": "/static/tabBar/advice-selected.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "我的",
+        "iconPath": "/static/tabBar/about-unselected.png",
+        "selectedIconPath": "/static/tabBar/about-selected.png"
+      }
+    ],
+	  "color": "",
+	  "selectedColor": "",
+	  "backgroundColor": ""
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#76b56a",
+    "backgroundColor": "#F8F8F8"
+  }
 }
