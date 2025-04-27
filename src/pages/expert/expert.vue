@@ -1,18 +1,34 @@
 <template>
   <view class="container">
+    <view class="swiper-container">
+      <uni-swiper-dot :info="swiperList" :current="currentIndex" field="src" mode="default">
+      <swiper class="swiper-box" @change="swiperChange" :autoplay="true">
+        <swiper-item v-for="(item, index) in swiperList" :key="index">
+          <view class="swiper-item">
+            <image :src="item.src" />
+          </view>
+        </swiper-item>
+      </swiper>
+      </uni-swiper-dot>
+    </view>
     <view class="search-bar">
       <uni-search-bar
-          v-model="searchInput"
           @input="searchExpert"
-          @cancel="clearSearch"
-          @clear="searchExpert"
-      >搜索咨询师</uni-search-bar>
+          @cancel="searchExpert('')"
+          radius="15px"
+          @clear="searchExpert('')"
+          clear-button="always"
+          cancelButton="always"
+          placeholder="搜索咨询师"
+      ></uni-search-bar>
     </view>
-    <view>
+  <view>
+    <view class="scroll-content" >
       <view v-for="(e, i) in filterExperts" :key="i" class="experts">
         <uni-card
             :is-shadow="true"
             padding="5px"
+            radius="15px"
         >
           <uni-row>
             <uni-col :span="6">
@@ -44,6 +60,7 @@
         </uni-card>
       </view>
         </view>
+  </view>
       <uni-load-more/>
     </view>
 </template>
@@ -65,40 +82,48 @@
     }
   }
 
+  interface swiperImg {
+    src: string
+  }
+
   export default {
     setup() {
-
-      let searchInput = ref<string>('')
-
       const experts: Array<ExpertInfo> = [
           new ExpertInfo('杨燕', '四川蓉桦律师事务所'),
           new ExpertInfo('陆芮竺', '四川致高律师事务所'),
           new ExpertInfo('卞德志', '北京大成（成都）律师事务所'),
-          new ExpertInfo('杜孟繁', '四川佰霖律师事务所')
+          new ExpertInfo('杜孟繁', '四川佰霖律师事务所'),
       ]
+
+      const swiperList = ref<Array<swiperImg>>([
+        { src: '/static/swiper/1.png' },
+        { src: ''}
+      ])
 
       let filterExperts = ref<Array<ExpertInfo>>(experts)
 
-      const searchExpert: () => void = () => {
-        if (searchInput.value === '') {
+      const searchExpert: (input: string) => void = (input: string) => {
+        if (input === '') {
           filterExperts.value = experts
         } else {
           filterExperts.value = experts.filter(
-              e => e.name.includes(searchInput.value) || e.address.includes(searchInput.value),
+              e => e.name.includes(input) || e.address.includes(input),
           )
         }
       }
 
-      const clearSearch: () => void = () => {
-        searchInput.value = ''
-        searchExpert()
+      let currentIndex = ref<number>(0)
+
+      const swiperChange = (e: any) => {
+        currentIndex.value = e.detail.current
       }
 
       return {
-        searchInput,
         filterExperts,
         searchExpert,
-        clearSearch,
+        swiperList,
+        currentIndex,
+        swiperChange
       }
     }
   }
@@ -106,6 +131,9 @@
 
 
 <style scoped lang="scss">
+.container {
+  height: 100vh;
+}
 .divider {
   width: 100%;
   height: 1px;
@@ -123,5 +151,27 @@ text {
 }
 .ask-button {
   margin-left: auto;
+}
+.search-bar {
+  position: sticky;
+  top: 150px;
+  background-color: #e8e8e8;
+  z-index: 10;
+}
+.swiper-container {
+  position: sticky;
+  height: 150px;
+  top: 0;
+  z-index: 10;
+}
+.swiper-item {
+  height: 100%;
+}
+.swiper-item image {
+  width: 100%;
+  height: 100%;
+}
+.scroll-content {
+  z-index: -1;
 }
 </style>

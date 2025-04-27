@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
+export default {
   setup() {
     const a = ref<number>(1)
 
@@ -19,7 +19,7 @@ export default defineComponent({
       a
     }
   }
-})
+}
 </script>
 
 <style>

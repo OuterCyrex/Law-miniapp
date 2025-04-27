@@ -61,17 +61,14 @@
 
 
 <style scoped lang="scss">
-.divider {
-  width: 100%;
-  height: 1px;
-  background-color: #ccc;
-  margin: 6px 0;
-}
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 6px 0;
+  }
   .container {
     margin-top: 20px;
-  }
-  .message-container {
-    height: 100%;
   }
   .input-bar {
     display: flex;
