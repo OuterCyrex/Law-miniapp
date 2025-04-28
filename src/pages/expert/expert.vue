@@ -97,7 +97,7 @@
 
       const swiperList = ref<Array<swiperImg>>([
         { src: '/static/swiper/1.png' },
-        { src: ''}
+        { src: '/static/swiper/2.png'}
       ])
 
       let filterExperts = ref<Array<ExpertInfo>>(experts)

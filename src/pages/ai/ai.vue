@@ -3,18 +3,27 @@
     <view class="message-container">
       <scroll-view :scroll-y="true" v-for="(m, i) in history.messages" :key="i">
         <view class="message-row">
-          <view class="ai-avatar">
+          <view v-if="m.role === 'ai'" class="ai-avatar">
             <image src="/static/ai-avatar.png" class="ai-avatar-img"/>
           </view>
-          <view class="ai-avatar-text">
+          <view v-if="m.role === 'ai'" class="ai-avatar-text">
             <text>{{m.content}}</text>
+          </view>
+          <view v-if="m.role === 'user'" class="user-avatar-text">
+            <text>{{m.content}}</text>
+          </view>
+          <view v-if="m.role === 'user'" class="user-avatar">
+            <image src="/static/ai-avatar.png" class="ai-avatar-img"/>
           </view>
         </view>
       </scroll-view>
     </view>
     <view class="input-bar">
       <image class="new-session-button" src="/static/new-session.png" />
-      <uni-easyinput></uni-easyinput>
+      <uni-easyinput v-model="userInput" class="input-area"></uni-easyinput>
+      <view class="send-button" @click="sendMessage">
+        <text>发送</text>
+      </view>
     </view>
   </view>
 </template>
@@ -43,8 +52,8 @@
     }
   }
 
-  const AI = 'ai' as const;
-  const User = 'user' as const;
+  const AI = 'ai' as const
+  const User = 'user' as const
 
   export default {
     setup() {
@@ -52,8 +61,17 @@
       history.value.push(new Message(AI, DefaultMessage.Introduction))
       history.value.push(new Message(AI, DefaultMessage.Greet))
 
+      let userInput = ref<string>('')
+
+      const sendMessage = () => {
+        console.log(userInput.value)
+        history.value.push(new Message(User, userInput.value))
+        userInput.value = ''
+      }
       return {
-        history
+        history,
+        sendMessage,
+        userInput
       }
     }
   }
@@ -61,20 +79,18 @@
 
 
 <style scoped lang="scss">
-  .divider {
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    margin: 6px 0;
-  }
   .container {
     margin-top: 20px;
   }
   .input-bar {
+    background-color: #f6f6f6;
+    padding: 2vw;
     display: flex;
-    margin: 16px 8px;
+    margin: 0;
     position: fixed;
-    top: calc(100vh - 60px);
+    top: calc(100vh - 52px);
+    justify-content: space-between;
+    width: 96vw;
   }
   .message-row {
     margin: 6px 12px;
@@ -91,9 +107,29 @@
     padding: 8px;
     border-radius: 0 5px 5px 5px;
   }
+  .user-avatar {
+    margin-left: auto;
+  }
+  .user-avatar-text {
+    margin-left: auto;
+    justify-items: flex-end;
+    border-radius: 5px 0 5px 5px;
+    background-color: #dfdfdf;
+    padding: 8px;
+  }
   .new-session-button {
     height: 30px;
     width: 30px;
-    margin: 4px;
+    margin: 4px 8px;
+  }
+  .send-button {
+    border-radius: 10px;
+    background-color: #007aff;
+    color: white;
+    width: 60px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
