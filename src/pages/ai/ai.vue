@@ -4,7 +4,7 @@
       <scroll-view :scroll-y="true" v-for="(m, i) in history.messages" :key="i">
         <view class="message-row">
           <view v-if="m.role === 'ai'" class="ai-avatar">
-            <image src="/static/ai-avatar.png" class="ai-avatar-img"/>
+            <image src="https://outer-pictures.oss-cn-beijing.aliyuncs.com/ai-avatar.png" class="ai-avatar-img"/>
           </view>
           <view v-if="m.role === 'ai'" class="ai-avatar-text">
             <text>{{m.content}}</text>
@@ -12,14 +12,11 @@
           <view v-if="m.role === 'user'" class="user-avatar-text">
             <text>{{m.content}}</text>
           </view>
-          <view v-if="m.role === 'user'" class="user-avatar">
-            <image src="/static/ai-avatar.png" class="ai-avatar-img"/>
-          </view>
         </view>
       </scroll-view>
     </view>
     <view class="input-bar">
-      <image class="new-session-button" src="/static/new-session.png" />
+      <image class="new-session-button" @click="newSession" src="/static/new-session.png" />
       <uni-easyinput v-model="userInput" class="input-area"></uni-easyinput>
       <view class="send-button" @click="sendMessage">
         <text>发送</text>
@@ -50,6 +47,11 @@
     public push(message: Message): void {
       this.messages.push(message)
     }
+
+    public clear(): void {
+      this.messages = []
+      this.length = 0
+    }
   }
 
   const AI = 'ai' as const
@@ -59,19 +61,28 @@
     setup() {
       let history = ref<History>(new History())
       history.value.push(new Message(AI, DefaultMessage.Introduction))
-      history.value.push(new Message(AI, DefaultMessage.Greet))
 
       let userInput = ref<string>('')
 
       const sendMessage = () => {
-        console.log(userInput.value)
         history.value.push(new Message(User, userInput.value))
         userInput.value = ''
+        setTimeout(() => {
+          history.value.push(new Message(AI, DefaultMessage.Response))
+        }, 2000)
+      }
+
+      const newSession = () => {
+        history.value.clear()
+        setTimeout(() => {
+          history.value.push(new Message(AI, DefaultMessage.Introduction))
+        }, 1000)
       }
       return {
         history,
         sendMessage,
-        userInput
+        userInput,
+        newSession,
       }
     }
   }
@@ -81,6 +92,9 @@
 <style scoped lang="scss">
   .container {
     margin-top: 20px;
+  }
+  .message-container {
+    padding-bottom: 80px;
   }
   .input-bar {
     background-color: #f6f6f6;
@@ -106,9 +120,6 @@
     background-color: #dfdfdf;
     padding: 8px;
     border-radius: 0 5px 5px 5px;
-  }
-  .user-avatar {
-    margin-left: auto;
   }
   .user-avatar-text {
     margin-left: auto;

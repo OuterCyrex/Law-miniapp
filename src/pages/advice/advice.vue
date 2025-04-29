@@ -7,7 +7,7 @@
             <image class="cover-image" mode="aspectFill" :src="c.img">
             </image>
             <view class="cover-content">
-              <text class="uni-subtitle uni-white">{{ c.title }}</text>
+              <text class="uni-subtitle">{{ c.title }}</text>
             </view>
           </view>
           <uni-list :border="false">
