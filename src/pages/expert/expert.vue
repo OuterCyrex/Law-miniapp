@@ -53,7 +53,7 @@
                 <uni-icons type="chat-filled"></uni-icons>
                 <text style="margin: 0 8px 0 4px; font-size: 12px; color: #4cd964;">在线</text>
                 <uni-icons type="phone-filled"></uni-icons>
-                <text style="margin: 0 2px; font: 13px bold">15610009881</text>
+                <text style="margin: 0 2px; font: 13px bold">{{e.phone }}</text>
               </view>
             </uni-col>
           </uni-row>
@@ -71,14 +71,14 @@
   class ExpertInfo {
     name: string = ''
     address: string = ''
-    info: string = ''
     avatar: string = ''
+    phone: string = '15660889001'
 
-    constructor(name: string, address: string, info?: string) {
+    constructor(name: string, address: string, phone?: string) {
       this.name = name
       this.address = address
-      this.info = info?.toString() || ''
       this.avatar = '/static/lawyer-avatar.jpg'
+      this.phone = phone || '15660889001'
     }
   }
 
@@ -89,10 +89,10 @@
   export default {
     setup() {
       const experts: Array<ExpertInfo> = [
-          new ExpertInfo('杨燕', '四川蓉桦律师事务所'),
-          new ExpertInfo('陆芮竺', '四川致高律师事务所'),
-          new ExpertInfo('卞德志', '北京大成（成都）律师事务所'),
-          new ExpertInfo('杜孟繁', '四川佰霖律师事务所'),
+          new ExpertInfo('杨燕', '四川蓉桦律师事务所', '15835510921'),
+          new ExpertInfo('陆芮竺', '四川致高律师事务所', '19660021256'),
+          new ExpertInfo('卞德志', '北京大成（成都）律师事务所', '13887711092'),
+          new ExpertInfo('杜孟繁', '四川佰霖律师事务所', '159717666112'),
       ]
 
       const swiperList = ref<Array<swiperImg>>([

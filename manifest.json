@@ -4,5 +4,6 @@
     "versionName" : "0.10",
     "mp-weixin" : {
         "appid" : "wxd1c9c82ac4c626c7"
-    }
+    },
+    "vueVersion" : "3"
 }
