@@ -1,16 +1,5 @@
 <template>
   <view class="container">
-    <view class="swiper-container">
-      <uni-swiper-dot :info="swiperList" :current="currentIndex" field="src" mode="default">
-      <swiper class="swiper-box" @change="swiperChange" :autoplay="true">
-        <swiper-item v-for="(item, index) in swiperList" :key="index">
-          <view class="swiper-item">
-            <image :src="item.src" />
-          </view>
-        </swiper-item>
-      </swiper>
-      </uni-swiper-dot>
-    </view>
     <view class="search-bar">
       <uni-search-bar
           @input="searchExpert"
@@ -95,11 +84,6 @@
           new ExpertInfo('杜孟繁', '四川佰霖律师事务所', '159717666112'),
       ]
 
-      const swiperList = ref<Array<swiperImg>>([
-        { src: 'https://outer-pictures.oss-cn-beijing.aliyuncs.com/1.png' },
-        { src: 'https://outer-pictures.oss-cn-beijing.aliyuncs.com/2.png'}
-      ])
-
       let filterExperts = ref<Array<ExpertInfo>>(experts)
 
       const searchExpert: (input: string) => void = (input: string) => {
@@ -112,18 +96,9 @@
         }
       }
 
-      let currentIndex = ref<number>(0)
-
-      const swiperChange = (e: any) => {
-        currentIndex.value = e.detail.current
-      }
-
       return {
         filterExperts,
         searchExpert,
-        swiperList,
-        currentIndex,
-        swiperChange
       }
     }
   }
@@ -153,23 +128,8 @@ text {
   margin-left: auto;
 }
 .search-bar {
-  position: sticky;
-  top: 150px;
   background-color: #e8e8e8;
   z-index: 10;
-}
-.swiper-container {
-  position: sticky;
-  height: 150px;
-  top: 0;
-  z-index: 10;
-}
-.swiper-item {
-  height: 100%;
-}
-.swiper-item image {
-  width: 100%;
-  height: 100%;
 }
 .scroll-content {
   z-index: -1;

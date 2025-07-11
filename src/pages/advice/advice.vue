@@ -84,6 +84,7 @@ let parts = ref<Array<AdvicePart>>(
       new AdvicePart('家庭权益', '/static/adviceCover/family-right.jpeg'),
       new AdvicePart('财务丢失', '/static/adviceCover/lost-found.png'),
       new AdvicePart('校园欺凌', '/static/adviceCover/school-bully.png'),
+      new AdvicePart('情绪管理', '/static/adviceCover/emotion-control.jpg'),
     ]
 )
 

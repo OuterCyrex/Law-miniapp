@@ -7,6 +7,13 @@
   },
   "pages": [
     {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "首页",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
       "path": "pages/expert/expert",
       "style": {
         "navigationBarTitleText": "专家咨询",
@@ -37,6 +44,12 @@
   ],
   "tabBar": {
     "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/tabBar/index-unselected.png",
+        "selectedIconPath": "/static/tabBar/index-selected.png"
+      },
       {
         "pagePath": "pages/expert/expert",
         "text": "专家咨询",
